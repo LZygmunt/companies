@@ -1,0 +1,21 @@
+#company-list {
+  &.blink {
+    &-enter,
+    &-exit-active,
+    &-exit-done {
+      transform: rotateY( 90deg );
+    }
+
+    &-enter-active,
+    &-enter-done {
+      transform: rotateY( 0 );
+    }
+
+    &-enter-active,
+    &-exit-active,
+    &-enter-done,
+    &-exit-done {
+      transition: all ease-in-out 500ms;
+    }
+  }
+}
