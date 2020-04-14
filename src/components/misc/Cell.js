@@ -1,10 +1,18 @@
 import React from 'react';
 
-const Cell = () => {
-  return (
-    <div id="cell">
+import "./scss/cell.scss";
 
-    </div>
+const Cell = ({ children, value, classNames }) => {
+  let isSetClassNames = classNames !== null && classNames !== undefined;
+  let className = isSetClassNames
+    ? [ "cell", ...classNames ].join( ' ' )
+    : "cell";
+
+  return (
+    <p className={ className }>
+      { value }
+      { children }
+    </p>
   );
 };
 

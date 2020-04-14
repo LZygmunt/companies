@@ -1,0 +1,29 @@
+.corners {
+  position: relative;
+
+  &::after, &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    border-left: .3em solid black;
+    border-top: .3em solid black;
+    border-bottom: none;
+    border-right: none;
+  }
+
+  &::after {
+    right: 0;
+    bottom: 0;
+    border-left: none;
+    border-top: none;
+    border-bottom: .3em solid black;
+    border-right: .3em solid black;
+  }
+}

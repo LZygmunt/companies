@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Arrow = () => {
-  return (
-    <div id="arrow">
+import "./scss/arrow.scss";
 
-    </div>
+const Arrow = ({ direction, handleClick }) => {
+  return (
+    <p className="block" onClick={ handleClick }>
+      <span className={ `arrow arrow-${ direction }` } />
+    </p>
   );
 };
 
