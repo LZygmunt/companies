@@ -7,15 +7,31 @@ const Input = ({
   id,
   name,
   type,
-  label
+  label,
+  filter,
+  actionType
 }) => {
   const [ focused, setFocused ] = React.useState( false );
   
   const changeFocus = evt => {
-    let { type, target } = evt;
+    const { type, target } = evt;
     if ( target.value.length !== 0 ) setFocused( true );
     else if ( type === "focus" ) setFocused( true );
     else if ( type === "blur" ) setFocused( false );
+  };
+
+  const handleChange = evt => {
+    const { target } = evt;
+    // console.log( evt );
+    changeFocus( evt );
+    filter( actionType, target.value );
+  };
+
+  const disableNonNumeric = evt => {
+    let { data, target } = evt;
+    if ( target.type !== "number") return false;
+    let regex = /[0-9]|\./;
+    if ( !regex.test( data )) evt.preventDefault();
   };
 
   return (
@@ -27,9 +43,10 @@ const Input = ({
         id={ id }
         type={ type }
         name={ name }
-        onChange={ changeFocus }
+        onChange={ handleChange }
         onFocus={ changeFocus }
         onBlur={ changeFocus }
+        onBeforeInput={ disableNonNumeric }
       />
     </WrapperCorner>
   );

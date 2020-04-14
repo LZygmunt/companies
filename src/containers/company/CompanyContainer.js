@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { DECREASE, INCREASE, REQUEST_COMPANIES_PENDING } from "../../store/utils/constans";
 import { requestIncomes } from "../../store/actions";
+import { DECREASE, INCREASE, REQUEST_COMPANIES_PENDING } from "../../store/utils/constans";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 import CompanyList from "../../components/company/CompanyList";
 import HeaderTable from "../../components/misc/HeaderTable";
 import WrapperCorner from "../../components/misc/WrapperCorner";
 import PageList from "../../components/misc/PageList";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 import "./scss/company-container.scss";
 
@@ -14,7 +14,13 @@ const mapStateToProps = state => ({
   companies: state.requestReducer.companies,
   incomes: state.requestReducer.incomes,
   isPending: state.requestReducer.isPending,
-  error: state.requestReducer.error
+  error: state.requestReducer.error,
+  id: state.filterReducer.id,
+  name: state.filterReducer.name,
+  city: state.filterReducer.city,
+  totalIncome: state.filterReducer.totalIncome,
+  averageIncome: state.filterReducer.averageIncome,
+  lastMonthIncome: state.filterReducer.lastMonthIncome,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -24,31 +30,46 @@ const mapDispatchToProps = dispatch => ({
 class CompanyContainer extends Component {
   state = {
     currentPage: 1,
-    countPage: 1,
     resultsNumber: 10
   };
 
-  componentDidUpdate ( prevProps, prevState, snapshot ) {
-    if ( prevProps.isPending === REQUEST_COMPANIES_PENDING ) {
-      this.setCountPage();
-    }
-  }
+  filteredCompanies = () => {
+    const {
+      companies,
+      id,
+      name,
+      city,
+      averageIncome,
+      totalIncome,
+      lastMonthIncome
+    } = this.props;
+
+    return companies.filter( company =>
+      company.id.toString().toLowerCase().includes( id.toString().toLowerCase())
+      && company.name.toLowerCase().includes( name.toLowerCase())
+      && company.city.toLowerCase().includes( city.toLowerCase())
+      // && company.averageIncome.toString().toLowerCase().includes( averageIncome.toString().toLowerCase())
+      // && company.totalIncome.toString().toLowerCase().includes( totalIncome.toString().toLowerCase())
+      // && company.lastMonthIncome.toString().toLowerCase().includes( lastMonthIncome.toString().toLowerCase())
+    );
+  };
 
   setCountPage = () => {
-    const { companies } = this.props;
     const { resultsNumber } = this.state;
+    const filteredCompanies = this.filteredCompanies();
 
-    let countPage = companies.length / resultsNumber;
+    let countPage = filteredCompanies.length / resultsNumber;
     let rest = countPage % 10;
     if ( rest !== 0 ) countPage = countPage - rest + 1;
-
-    this.setState({ countPage: countPage })
+    if ( countPage === 0 ) return 1;
+    return countPage;
   };
 
   setDisplayCompanies = () => {
     const { resultsNumber, currentPage } = this.state;
-    const { companies } = this.props;
-    return companies.slice( resultsNumber * currentPage - resultsNumber, resultsNumber * currentPage );
+    let filteredCompanies = this.filteredCompanies();
+
+    return filteredCompanies.slice( resultsNumber * currentPage - resultsNumber, resultsNumber * currentPage );
   };
 
   setPage = type => {
@@ -72,13 +93,13 @@ class CompanyContainer extends Component {
   // };
 
   render () {
-    const { currentPage, countPage } = this.state;
-    const { setDisplayCompanies, setPage } = this;
+    const { currentPage } = this.state;
+    const { setDisplayCompanies, setPage, setCountPage } = this;
 
     return (
       <div id="company">
         <PageList
-          countPage={ countPage }
+          countPage={ setCountPage()}
           currentPage={ currentPage }
           setPage={ setPage }
         />

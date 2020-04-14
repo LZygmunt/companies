@@ -1,4 +1,4 @@
-export const filter = ( type, text ) => ({
+export const filter = ( type, value ) => ({
   type: type,
-  payload: text
+  payload: value
 });
