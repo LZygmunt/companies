@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
   city: state.filterReducer.city,
   totalIncome: state.filterReducer.totalIncome,
   averageIncome: state.filterReducer.averageIncome,
-  lastMonthIncome: state.filterReducer.lastMonthIncome,
+  lastMonthIncome: state.filterReducer.lastMonthIncome
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -30,9 +30,55 @@ const mapDispatchToProps = dispatch => ({
 class CompanyContainer extends Component {
   state = {
     currentPage: 1,
-    resultsNumber: 10
+    countPage: 1,
+    resultsNumber: 10,
+    companies: [],
+    sortType: "",
+    column: ""
   };
 
+  componentDidUpdate ( prevProps, prevState, snapshot ) {
+    const {
+      isPending,
+      id,
+      name,
+      city,
+      totalIncome,
+      averageIncome,
+      lastMonthIncome,
+      companies
+    } = this.props;
+    const {
+      companies: companiesState,
+      sortType,
+      column
+    } = this.state;
+    const {
+      setCountPage,
+      filteredCompanies,
+      quickSort
+    } = this;
+
+    if ( prevProps.isPending === REQUEST_COMPANIES_PENDING && isPending === "" ) {
+      this.setState({ companies: [ ...companies ] });
+      setCountPage( companies );
+    }
+
+    if (
+      prevProps.id !== id || prevProps.name !== name
+      || prevProps.city !== city || prevProps.totalIncome !== totalIncome
+      || prevProps.averageIncome !== averageIncome || prevProps.lastMonthIncome !== lastMonthIncome
+    ) {
+      setCountPage( filteredCompanies());
+    }
+
+    if ( !( prevState.sortType === sortType && prevState.column === column )) {
+      let sortCompanies =
+        quickSort( companiesState, 0, companiesState.length - 1, column, sortType );
+      this.setState({ companies: sortCompanies });
+    }
+  }
+//ToDo sortowanie po filtrowaniu
   filteredCompanies = () => {
     const {
       companies,
@@ -44,7 +90,7 @@ class CompanyContainer extends Component {
       lastMonthIncome
     } = this.props;
 
-    return companies.filter( company =>
+    let filteredCompanies = companies.filter( company =>
       company.id.toString().toLowerCase().includes( id.toString().toLowerCase())
       && company.name.toLowerCase().includes( name.toLowerCase())
       && company.city.toLowerCase().includes( city.toLowerCase())
@@ -52,24 +98,38 @@ class CompanyContainer extends Component {
       // && company.totalIncome.toString().toLowerCase().includes( totalIncome.toString().toLowerCase())
       // && company.lastMonthIncome.toString().toLowerCase().includes( lastMonthIncome.toString().toLowerCase())
     );
+
+    this.setState({ companies: filteredCompanies });
+    return filteredCompanies;
   };
 
-  setCountPage = () => {
+  setCountPage = companies => {
     const { resultsNumber } = this.state;
-    const filteredCompanies = this.filteredCompanies();
 
-    let countPage = filteredCompanies.length / resultsNumber;
-    let rest = countPage % 10;
+    let countPage = companies.length / resultsNumber;
+    let rest = countPage % 1;
     if ( rest !== 0 ) countPage = countPage - rest + 1;
-    if ( countPage === 0 ) return 1;
-    return countPage;
+
+    this.setState({
+      countPage: countPage === 0 ? 1 : countPage,
+      currentPage: 1
+    });
   };
 
   setDisplayCompanies = () => {
-    const { resultsNumber, currentPage } = this.state;
-    let filteredCompanies = this.filteredCompanies();
+    const {
+      resultsNumber,
+      currentPage,
+      sortType,
+      column,
+      companies
+    } = this.state;
+    let start, end;
 
-    return filteredCompanies.slice( resultsNumber * currentPage - resultsNumber, resultsNumber * currentPage );
+    start = resultsNumber * currentPage - resultsNumber;
+    end = resultsNumber * currentPage;
+
+    return companies.slice( start, end );
   };
 
   setPage = type => {
@@ -92,19 +152,82 @@ class CompanyContainer extends Component {
   //   companies.forEach( company => company.id )
   // };
 
+  swap = ( arr, i, j ) => {
+    const temp = arr[ i ];
+    arr[ i ] = arr[ j ];
+    arr[ j ] = temp;
+  };
+
+  partition = ( arr, pivot, left, right, column, sortType ) => {
+    const pivotValue = arr[ pivot ];
+    let partitionIndex = left;
+
+    for( let i = left; i < right; i++ ) {
+      if ( sortType === "asc" && arr[ i ][ column ] < pivotValue[ column ] ) {
+        this.swap( arr, i, partitionIndex );
+        partitionIndex++;
+      } else if ( sortType === "desc" && arr[ i ][ column ] > pivotValue[ column ] ) {
+        this.swap( arr, i, partitionIndex );
+        partitionIndex++;
+      }
+    }
+
+    this.swap( arr, right, partitionIndex );
+    return partitionIndex;
+  };
+
+  quickSort = ( arr, left, right, column, sortType ) => {
+    let pivot, partitionIndex;
+
+    if ( left < right ) {
+      pivot = right;
+      partitionIndex = this.partition( arr, pivot, left, right, column, sortType );
+
+      this.quickSort( arr, left, partitionIndex - 1, column, sortType );
+      this.quickSort( arr, partitionIndex + 1, right, column, sortType );
+    }
+
+    return arr;
+  };
+
+  sort = evt => {
+    const { currentTarget } = evt;
+    const { className, classList } = currentTarget.previousElementSibling;
+
+    this.setState({ column: classList[ 1 ]});
+
+    let nextEl = document
+      .querySelector( `.${ className.replace( ' ', '.' )}` )
+      .nextElementSibling;
+
+    if ( currentTarget.dataset["direction"] === "down" ) {
+      nextEl.dataset[ "direction" ] = "up";
+      nextEl.children[ 0 ].classList.replace( "arrow-down", "arrow-up" );
+      this.setState({ sortType: "asc" });
+    } else if ( currentTarget.dataset["direction"] === "up" ) {
+      nextEl.dataset[ "direction" ] = "down";
+      nextEl.children[ 0 ].classList.replace( "arrow-up", "arrow-down" );
+      this.setState({ sortType: "desc" });
+    }
+  };
+
   render () {
-    const { currentPage } = this.state;
-    const { setDisplayCompanies, setPage, setCountPage } = this;
+    const { currentPage, countPage } = this.state;
+    const {
+      setDisplayCompanies,
+      setPage,
+      sort
+    } = this;
 
     return (
       <div id="company">
         <PageList
-          countPage={ setCountPage()}
+          countPage={ countPage }
           currentPage={ currentPage }
           setPage={ setPage }
         />
         <WrapperCorner >
-          <HeaderTable/>
+          <HeaderTable sort={ sort }/>
           <SwitchTransition mode="out-in">
             <CSSTransition
               key={ currentPage }
@@ -114,7 +237,7 @@ class CompanyContainer extends Component {
               classNames="blink"
               timeout={ 500 }
             >
-              <CompanyList companies={ setDisplayCompanies() }/>
+              <CompanyList companies={ setDisplayCompanies()}/>
             </CSSTransition>
           </SwitchTransition>
         </WrapperCorner>

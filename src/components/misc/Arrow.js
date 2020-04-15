@@ -4,7 +4,11 @@ import "./scss/arrow.scss";
 
 const Arrow = ({ direction, handleClick }) => {
   return (
-    <p className="block" onClick={ handleClick }>
+    <p
+      className="block"
+      onClick={ handleClick }
+      data-direction={ direction }
+    >
       <span className={ `arrow arrow-${ direction }` } />
     </p>
   );

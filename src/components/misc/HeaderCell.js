@@ -4,7 +4,12 @@ import Arrow from "./Arrow";
 
 import "./scss/header-cell.scss";
 
-const HeaderCell = ({ value, classNames }) => {
+const HeaderCell = ({
+  value,
+  classNames,
+  sort,
+  direction
+}) => {
   let isSetClassNames = classNames !== null && classNames !== undefined;
   let className = isSetClassNames
     ? [ ...classNames ]
@@ -13,7 +18,7 @@ const HeaderCell = ({ value, classNames }) => {
   return (
     <div className="header-cell">
       <Cell value={ value } classNames={ className }/>
-      <Arrow direction="down"/>
+      <Arrow direction="down" handleClick={ sort }/>
     </div>
   );
 };
