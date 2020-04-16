@@ -36,13 +36,14 @@ export const requestReducer = ( state = initState, action ) => {
     case REQUEST_INCOMES_PENDING:
       return {
         ...state,
-        isPending: REQUEST_INCOMES_PENDING
+        isPending: action.payload ? REQUEST_INCOMES_PENDING: ""
       };
     case REQUEST_INCOMES_SUCCESS:
+      let incomes = [ ...state.incomes ];
+      incomes.push({ ...action.payload });
       return {
         ...state,
-        incomes: action.payload,
-        isPending: ""
+        incomes: incomes
       };
     case REQUEST_INCOMES_FAILED:
       return {

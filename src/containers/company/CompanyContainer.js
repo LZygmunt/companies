@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { requestIncomes } from "../../store/actions";
-import { DECREASE, INCREASE, REQUEST_COMPANIES_PENDING } from "../../store/utils/constans";
+import { DECREASE, INCREASE, REQUEST_COMPANIES_PENDING, REQUEST_INCOMES_PENDING } from "../../store/utils/constans";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import CompanyList from "../../components/company/CompanyList";
 import HeaderTable from "../../components/misc/HeaderTable";
@@ -59,9 +59,21 @@ class CompanyContainer extends Component {
       quickSort
     } = this;
 
-    if ( prevProps.isPending === REQUEST_COMPANIES_PENDING && isPending === "" ) {
+    if ( prevProps.isPending === REQUEST_COMPANIES_PENDING ) {
       this.setState({ companies: [ ...companies ] });
       setCountPage( companies );
+    }
+
+    if ( prevProps.isPending === REQUEST_INCOMES_PENDING && isPending === "") {
+      const { incomes, companies } = this.props;
+      let cmps = [ ...companies ];
+      cmps.forEach( company => {
+        let find = incomes.find( income => income.id === company.id );
+        company.averageIncome = find.averageIncome;
+        company.totalIncome = find.totalIncome;
+        company.lastMonthIncome = find.lastMonthIncome;
+      });
+      this.setState({ companies: cmps })
     }
 
     if (
@@ -120,8 +132,6 @@ class CompanyContainer extends Component {
     const {
       resultsNumber,
       currentPage,
-      sortType,
-      column,
       companies
     } = this.state;
     let start, end;
@@ -194,7 +204,13 @@ class CompanyContainer extends Component {
     const { currentTarget } = evt;
     const { className, classList } = currentTarget.previousElementSibling;
 
-    this.setState({ column: classList[ 1 ]});
+    let column = classList[ 1 ].split( '-' );
+    column.forEach(( string, index ) => ( index > 0 )
+      ? column[ index ] = string[ 0 ].toUpperCase() + string.slice( 1 )
+      : column[ index ]);
+    column = column.join( '' );
+
+    this.setState({ column: column });
 
     let nextEl = document
       .querySelector( `.${ className.replace( ' ', '.' )}` )
