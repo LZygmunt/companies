@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { requestIncomes } from "../../store/actions";
-import { DECREASE, INCREASE, REQUEST_COMPANIES_PENDING, REQUEST_INCOMES_PENDING } from "../../store/utils/constans";
+import {
+  DECREASE,
+  INCREASE,
+  REQUEST_COMPANIES_PENDING,
+  REQUEST_INCOMES_PENDING
+} from "../../store/utils/constans";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import CompanyList from "../../components/company/CompanyList";
 import HeaderTable from "../../components/misc/HeaderTable";
 import WrapperCorner from "../../components/misc/WrapperCorner";
 import PageList from "../../components/misc/PageList";
+import Loader from "../../components/misc/Loader";
 
 import "./scss/company-container.scss";
 
@@ -302,7 +308,12 @@ class CompanyContainer extends Component {
               classNames="blink"
               timeout={ 500 }
             >
-              <CompanyList companies={ setDisplayCompanies()}/>
+              <>
+                { isPending !== "" && <Loader className={
+                  isPending === REQUEST_INCOMES_PENDING ? "upon-incomes": ""
+                }/> }
+                <CompanyList companies={ setDisplayCompanies() }/>
+              </>
             </CSSTransition>
           </SwitchTransition>
         </WrapperCorner>

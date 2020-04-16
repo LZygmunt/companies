@@ -1,4 +1,17 @@
 #company {
   width: 70%;
   margin: 4em 5em auto;
+
+  .corners {
+    height: 37em;
+  }
+
+  .spinner {
+    top: calc( 50% - 2em );
+    left: calc( 50% - 2em );
+
+    &.upon-incomes {
+      left: 80%
+    }
+  }
 }

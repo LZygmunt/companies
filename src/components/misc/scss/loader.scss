@@ -1,0 +1,20 @@
+.spinner {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  border-bottom: .3em solid black;
+  border-right: .3em solid #606060;
+  border-top: .3em solid #899fb6;
+  border-left: .3em solid transparent;
+  position: absolute;
+  animation: spinner 1s infinite;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotateZ( 0 );
+  }
+  to {
+    transform: rotateZ( 360deg );
+  }
+}
