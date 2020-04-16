@@ -3,6 +3,11 @@
   padding: 1em;
   margin: 1em auto;
 
+  &.disabled, input:disabled, &.disabled label {
+    color: #606060;
+    cursor: not-allowed;
+  }
+
   label, input { transition: all ease-in-out .2s; }
 
   label {

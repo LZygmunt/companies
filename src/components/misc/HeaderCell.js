@@ -7,8 +7,7 @@ import "./scss/header-cell.scss";
 const HeaderCell = ({
   value,
   classNames,
-  sort,
-  direction
+  sort
 }) => {
   let isSetClassNames = classNames !== null && classNames !== undefined;
   let className = isSetClassNames

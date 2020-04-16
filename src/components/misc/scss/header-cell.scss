@@ -13,4 +13,18 @@
     width: min-content;
     padding-right: .7em;
   }
+
+  .disabled {
+    color: #606060;
+    cursor: not-allowed;
+
+    & + .block, & + .block .arrow {
+      cursor: not-allowed;
+    }
+
+    & + .block .arrow {
+      border-right: .3em solid #606060;
+      border-bottom: .3em solid #606060;
+    }
+  }
 }

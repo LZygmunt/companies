@@ -1,19 +1,22 @@
 import {
-  SET_FILTER_AVERAGE_INCOME,
+  SET_FILTER_AVERAGE_INCOME_TO,
+  SET_FILTER_AVERAGE_INCOME_FROM,
   SET_FILTER_CITY,
   SET_FILTER_ID,
-  SET_FILTER_LAST_MONTH_INCOME,
+  SET_FILTER_LAST_MONTH_INCOME_TO,
+  SET_FILTER_LAST_MONTH_INCOME_FROM,
   SET_FILTER_NAME,
-  SET_FILTER_TOTAL_INCOME
+  SET_FILTER_TOTAL_INCOME_TO,
+  SET_FILTER_TOTAL_INCOME_FROM
 } from "../utils/constans";
 
 const initState = {
   id: "",
   name: "",
   city: "",
-  averageIncome: "",
-  totalIncome: "",
-  lastMonthIncome: ""
+  averageIncome: { from: 0, to: 0 },
+  totalIncome: { from: 0, to: 0 },
+  lastMonthIncome: { from: 0, to: 0 }
 };
 
 export const filterReducer = ( state = initState, action ) => {
@@ -33,20 +36,53 @@ export const filterReducer = ( state = initState, action ) => {
         ...state,
         name: action.payload
       };
-    case SET_FILTER_AVERAGE_INCOME:
+    case SET_FILTER_AVERAGE_INCOME_FROM:
       return {
         ...state,
-        averageIncome: action.payload
+        averageIncome: {
+          from: action.payload,
+          to: state.averageIncome.to
+        }
       };
-    case SET_FILTER_LAST_MONTH_INCOME:
+    case SET_FILTER_LAST_MONTH_INCOME_FROM:
       return {
         ...state,
-        lastMonthIncome: action.payload
+        lastMonthIncome: {
+          from: action.payload,
+          to: state.lastMonthIncome.to
+        }
       };
-    case SET_FILTER_TOTAL_INCOME:
+    case SET_FILTER_TOTAL_INCOME_FROM:
       return {
         ...state,
-        totalIncome: action.payload
+        totalIncome: {
+          from: action.payload,
+          to: state.totalIncome.to
+        }
+      };
+    case SET_FILTER_AVERAGE_INCOME_TO:
+      return {
+        ...state,
+        averageIncome: {
+          to: action.payload,
+          from: state.averageIncome.from
+        }
+      };
+    case SET_FILTER_LAST_MONTH_INCOME_TO:
+      return {
+        ...state,
+        lastMonthIncome: {
+          to: action.payload,
+          from: state.lastMonthIncome.from
+        }
+      };
+    case SET_FILTER_TOTAL_INCOME_TO:
+      return {
+        ...state,
+        totalIncome: {
+          to: action.payload,
+          from: state.totalIncome.from
+        }
       };
     default:
       return state;

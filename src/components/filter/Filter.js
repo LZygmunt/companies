@@ -1,17 +1,21 @@
 import React from 'react';
 import Input from "../misc/Input";
 import {
-    SET_FILTER_AVERAGE_INCOME,
-    SET_FILTER_CITY,
-    SET_FILTER_ID,
-    SET_FILTER_LAST_MONTH_INCOME,
-    SET_FILTER_NAME,
-    SET_FILTER_TOTAL_INCOME
+  REQUEST_COMPANIES_PENDING,
+  SET_FILTER_AVERAGE_INCOME_FROM,
+  SET_FILTER_AVERAGE_INCOME_TO,
+  SET_FILTER_CITY,
+  SET_FILTER_ID,
+  SET_FILTER_LAST_MONTH_INCOME_FROM,
+  SET_FILTER_LAST_MONTH_INCOME_TO,
+  SET_FILTER_NAME,
+  SET_FILTER_TOTAL_INCOME_FROM,
+  SET_FILTER_TOTAL_INCOME_TO
 } from "../../store/utils/constans";
 
 import "./scss/filter.scss";
 
-const Filter = ({ filter }) => {
+const Filter = ({ filter, isPending }) => {
   return (
     <div id="filter">
       <h2>Filter by:</h2>
@@ -20,6 +24,7 @@ const Filter = ({ filter }) => {
         name="company-id"
         type="number"
         label="ID"
+        disabled={ isPending === REQUEST_COMPANIES_PENDING }
         filter={ filter }
         actionType={ SET_FILTER_ID }
       />
@@ -28,6 +33,7 @@ const Filter = ({ filter }) => {
         name="company-name"
         type="text"
         label="NAME"
+        disabled={ isPending === REQUEST_COMPANIES_PENDING }
         filter={ filter }
         actionType={ SET_FILTER_NAME }
       />
@@ -36,32 +42,66 @@ const Filter = ({ filter }) => {
         name="company-city"
         type="text"
         label="CITY"
+        disabled={ isPending === REQUEST_COMPANIES_PENDING }
         filter={ filter }
         actionType={ SET_FILTER_CITY }
       />
+      <p className="label">TOTAL INCOME</p>
       <Input
-        id="company-total-income"
-        name="company-total-income"
+        id="company-total-income-from"
+        name="company-total-income-from"
         type="number"
-        label="TOTAL INCOME"
+        label="FROM"
+        disabled={ isPending !== ""}
         filter={ filter }
-        actionType={ SET_FILTER_TOTAL_INCOME }
+        actionType={ SET_FILTER_TOTAL_INCOME_FROM }
       />
       <Input
-        id="company-average-income"
-        name="company-average-income"
+        id="company-total-income-to"
+        name="company-total-income-to"
         type="number"
-        label="AVERAGE INCOME"
+        label="TO"
+        disabled={ isPending !== "" }
         filter={ filter }
-        actionType={ SET_FILTER_AVERAGE_INCOME }
+        actionType={ SET_FILTER_TOTAL_INCOME_TO }
+      />
+      <p className="label">AVERAGE INCOME</p>
+      <Input
+        id="company-average-income-from"
+        name="company-average-income-from"
+        type="number"
+        label="FROM"
+        disabled={ isPending !== "" }
+        filter={ filter }
+        actionType={ SET_FILTER_AVERAGE_INCOME_FROM }
       />
       <Input
-        id="company-last-month-income"
-        name="company-last-month-income"
+        id="company-average-income-to"
+        name="company-average-income-to"
         type="number"
-        label="LAST MONTH INCOME"
+        label="TO"
+        disabled={ isPending !== "" }
         filter={ filter }
-        actionType={ SET_FILTER_LAST_MONTH_INCOME }
+        actionType={ SET_FILTER_AVERAGE_INCOME_TO }
+      />
+      <p className="label">LAST MONTH INCOME</p>
+      <Input
+        id="company-last-month-income-from"
+        name="company-last-month-income-from"
+        type="number"
+        label="FROM"
+        disabled={ isPending !== "" }
+        filter={ filter }
+        actionType={ SET_FILTER_LAST_MONTH_INCOME_FROM }
+      />
+      <Input
+        id="company-last-month-income-to"
+        name="company-last-month-income-to"
+        type="number"
+        label="TO"
+        disabled={ isPending !== "" }
+        filter={ filter }
+        actionType={ SET_FILTER_LAST_MONTH_INCOME_TO }
       />
     </div>
   );

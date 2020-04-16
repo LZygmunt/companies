@@ -8,11 +8,12 @@ const Input = ({
   name,
   type,
   label,
+  disabled,
   filter,
   actionType
 }) => {
   const [ focused, setFocused ] = React.useState( false );
-  
+
   const changeFocus = evt => {
     const { type, target } = evt;
     if ( target.value.length !== 0 ) setFocused( true );
@@ -22,7 +23,7 @@ const Input = ({
 
   const handleChange = evt => {
     const { target } = evt;
-    // console.log( evt );
+
     changeFocus( evt );
     filter( actionType, target.value );
   };
@@ -34,8 +35,9 @@ const Input = ({
     if ( !regex.test( data )) evt.preventDefault();
   };
 
+
   return (
-    <WrapperCorner classNames={[ "input" ]}>
+    <WrapperCorner classNames={[ "input", disabled ? "disabled" : "" ]}>
       <label htmlFor={ name } className={ focused ? "focused" : "" }>
         { label }:
       </label>
@@ -43,6 +45,8 @@ const Input = ({
         id={ id }
         type={ type }
         name={ name }
+        min={ 0 }
+        disabled={ disabled }
         onChange={ handleChange }
         onFocus={ changeFocus }
         onBlur={ changeFocus }

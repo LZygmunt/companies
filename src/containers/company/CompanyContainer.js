@@ -90,7 +90,24 @@ class CompanyContainer extends Component {
       this.setState({ companies: sortCompanies });
     }
   }
-//ToDo sortowanie po filtrowaniu
+
+  intervalCondition = ( arr, obj, el ) => {
+    switch ( true ) {
+      case +obj.from === 0 && +obj.to !== 0:
+        return arr = arr.filter( item => +item[ el ] < +obj.to );
+      case +obj.to === 0 && +obj.from !== 0:
+        return arr = arr.filter( item => +item[ el ] > +obj.from);
+      case +obj.from > 0 && +obj.to > 0 && +obj.to < +obj.from :
+        return arr;
+      case +obj.from > 0 && +obj.to > 0:
+        return arr = arr.filter(
+          item => +item[ el ] > +obj.from && +item[ el ] < +obj.to
+        );
+      default:
+        return arr
+    }
+  };
+
   filteredCompanies = () => {
     const {
       companies,
@@ -101,15 +118,52 @@ class CompanyContainer extends Component {
       totalIncome,
       lastMonthIncome
     } = this.props;
+    const { sortType, column } = this.state;
+    const { intervalCondition, quickSort } = this;
 
     let filteredCompanies = companies.filter( company =>
       company.id.toString().toLowerCase().includes( id.toString().toLowerCase())
       && company.name.toLowerCase().includes( name.toLowerCase())
       && company.city.toLowerCase().includes( city.toLowerCase())
-      // && company.averageIncome.toString().toLowerCase().includes( averageIncome.toString().toLowerCase())
-      // && company.totalIncome.toString().toLowerCase().includes( totalIncome.toString().toLowerCase())
-      // && company.lastMonthIncome.toString().toLowerCase().includes( lastMonthIncome.toString().toLowerCase())
     );
+
+    filteredCompanies = intervalCondition( filteredCompanies, totalIncome, "totalIncome" );
+    filteredCompanies = intervalCondition( filteredCompanies, averageIncome, "averageIncome" );
+    filteredCompanies = intervalCondition( filteredCompanies, lastMonthIncome, "lastMonthIncome" );
+
+    // if ( +averageIncome.from === 0 && +averageIncome.to !== 0) {
+    //   filteredCompanies = filteredCompanies.filter( company => +company.averageIncome < +averageIncome.to);
+    // } else if ( +averageIncome.to === 0 && +averageIncome.from !== 0 ) {
+    //   filteredCompanies = filteredCompanies.filter( company => +company.averageIncome > +averageIncome.from);
+    // } else if ( +averageIncome.from > 0 && +averageIncome.to > 0) {
+    //   filteredCompanies = filteredCompanies.filter(
+    //     company => +company.averageIncome > +averageIncome.from && +company.averageIncome < +averageIncome.to
+    //   );
+    // }
+    //
+    // if ( +totalIncome.from === 0 && +totalIncome.to !== 0 ) {
+    //   filteredCompanies = filteredCompanies.filter( company => +company.totalIncome < +totalIncome.to);
+    // } else if ( +totalIncome.to === 0 && +totalIncome.from !== 0 ) {
+    //   filteredCompanies = filteredCompanies.filter( company => +company.totalIncome > +totalIncome.from);
+    // } else if ( +totalIncome.from > 0 && +totalIncome.to > 0) {
+    //   filteredCompanies = filteredCompanies.filter(
+    //     company => +company.totalIncome > +totalIncome.from && +company.totalIncome < +totalIncome.to
+    //   );
+    // }
+    //
+    // if ( +lastMonthIncome.from === 0 && +lastMonthIncome.to !== 0 ) {
+    //   filteredCompanies = filteredCompanies.filter( company => +company.lastMonthIncome < +lastMonthIncome.to);
+    // } else if ( +lastMonthIncome.to === 0 && +lastMonthIncome.from !== 0 ) {
+    //   filteredCompanies = filteredCompanies.filter( company => +company.lastMonthIncome > +lastMonthIncome.from);
+    // } else if ( +lastMonthIncome.from > 0 && +lastMonthIncome.to > 0) {
+    //   filteredCompanies = filteredCompanies.filter(
+    //     company => +company.lastMonthIncome > +lastMonthIncome.from && +company.lastMonthIncome < +lastMonthIncome.to
+    //   );
+    // }
+
+    if ( sortType !== "" ) {
+      filteredCompanies = quickSort( filteredCompanies, 0, filteredCompanies.length - 1, column, sortType );
+    }
 
     this.setState({ companies: filteredCompanies });
     return filteredCompanies;
@@ -155,12 +209,6 @@ class CompanyContainer extends Component {
       }));
     }
   };
-
-  // setIncome = () => {
-  //   let { companies, requestIncome } = this.props;
-  //
-  //   companies.forEach( company => company.id )
-  // };
 
   swap = ( arr, i, j ) => {
     const temp = arr[ i ];
@@ -228,6 +276,7 @@ class CompanyContainer extends Component {
   };
 
   render () {
+    const { isPending } = this.props;
     const { currentPage, countPage } = this.state;
     const {
       setDisplayCompanies,
@@ -243,7 +292,7 @@ class CompanyContainer extends Component {
           setPage={ setPage }
         />
         <WrapperCorner >
-          <HeaderTable sort={ sort }/>
+          <HeaderTable sort={ sort } isPending={ isPending }/>
           <SwitchTransition mode="out-in">
             <CSSTransition
               key={ currentPage }
