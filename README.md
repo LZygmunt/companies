@@ -1,68 +1,135 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introduction
 
-## Available Scripts
+## Install and Run
 
-In the project directory, you can run:
+1. Clone repository
+2. Run `npm install`
+3. Run `npm start`
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+App allows user display companies with their incomes (average, last month and total), 
+filtering and sorting by all fields. Companies and incomes ara fetch from external API.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Project Documentation
 
-### `npm test`
+## Files and Folders Structure
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+├── src
+│   ├── assets
+│   │   └── scss
+│   │       └── _mediaqueries.scss
+│   ├── components
+│   │   ├── company
+│   │   │   ├── CompanyItem.js
+│   │   │   ├── CompanyList.js
+│   │   │   └── scss
+│   │   │       └── company-list.scss
+│   │   ├── filter
+│   │   │   ├── Filter.js
+│   │   │   └── scss
+│   │   │       └── filter.scss
+│   │   └── misc
+│   │       ├── Arrow.js
+│   │       ├── Cell.js
+│   │       ├── Hamburger.js
+│   │       ├── HeaderCell.js
+│   │       ├── HeaderTable.js
+│   │       ├── Input.js
+│   │       ├── Loader.js
+│   │       ├── PageList.js
+│   │       ├── scss
+│   │       │   ├── arrow.scss
+│   │       │   ├── cell.scss
+│   │       │   ├── grid.scss
+│   │       │   ├── hamburger.scss
+│   │       │   ├── header-cell.scss
+│   │       │   ├── input.scss
+│   │       │   ├── loader.scss
+│   │       │   ├── page-list.scss
+│   │       │   └── wrapper-corner.scss
+│   │       ├── setClassNames.js
+│   │       └── WrapperCorner.js
+│   ├── containers
+│   │   ├── app
+│   │   │   ├── App.js
+│   │   │   └── scss
+│   │   │       └── App.scss
+│   │   ├── company
+│   │   │   ├── CompanyContainer.js
+│   │   │   └── scss
+│   │   │       └── company-container.scss
+│   │   └── filter
+│   │       └── FilterContainer.js
+│   ├── index.js
+│   ├── index.scss
+│   ├── serviceWorker.js
+│   ├── store
+│   │   ├── actions
+│   │   │   ├── filterAction.js
+│   │   │   ├── index.js
+│   │   │   └── requestAction.js
+│   │   ├── reducers
+│   │   │   ├── filterReducer.js
+│   │   │   ├── index.js
+│   │   │   └── requestReducer.js
+│   │   └── utils
+│   │       └── constans.js
+```
 
-### `npm run build`
+## `public/` Folder 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This folder contains:
+ * `index.html` is the page template;
+ * `favicon.ico `, `logo192.png`, `logo512.png` are icons; 
+ * `manifest.json` describe icon for mobile devices; 
+ * `robots.txt` is a text file that tells web robots( most often search engine s) which pages on your site to crawl.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**Note: The following file and folder names are documentation references associated with them!**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## `src/` Folder 
 
-### `npm run eject`
+This folder contains all React source files written in js and jsx and SASS stylesheet files.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+ * `./index.js` is the JavaScript entry point;
+ * `./index.scss` describe appearance for basic tags such as `<html></html>`, `<body></body>` and custom identifiers
+like `#root` and `#app`;
+ * `./serwiceWorker.js` contains functions that allows app work offline.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### [`./assets/`](https://github.com/LZygmunt/companies/tree/master/src/assets/doc_assets.md) Folder
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This folder contains stylesheets shared over whole app.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[`./scss/_mediaqueries.scss`](https://github.com/LZygmunt/companies/tree/master/src/assets/doc_assets.md#Mediaqueries-Mixin) contains `@mixin` SASS function with breakpoints.
 
-## Learn More
+### [`./components/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components) Folder
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This folder contains presentation components with stylesheets.
+ * [`./company/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components#Company) contains presentation layer of each companies( with incomes ) and list of companies;
+ * [`./filter/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components#Filter) contains presentation layer of filter block;
+ * [`./misc/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components#Misc) contains presentation layer of miscellaneous components like custom inputs, cells, etc.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### [`./containers/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers) Folder
 
-### Code Splitting
+This folder contains container components with stylesheets.
+ * [`./company/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers#Company) contains container with list of companies;
+ * [`./filter/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers#Filter) contains container filter block;
+ * [`./app/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers#App) contains container with entire application.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### [`./store/`](https://github.com/LZygmunt/companies/tree/master/src/) Folder
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This folder contains store with actions.
+ * [`./actions/`](https://github.com/LZygmunt/companies/tree/master/src/) contains actions use to filtering and requesting;
+ * [`./reducers/`](https://github.com/LZygmunt/companies/tree/master/src/) contains reducers use to filtering and requesting;
+ * [`./utils/`](https://github.com/LZygmunt/companies/tree/master/src/) contains utilities like constants.
