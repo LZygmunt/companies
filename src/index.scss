@@ -10,16 +10,14 @@ body {
   background-image: linear-gradient(25deg, #899fb6 0%, #a6a6a6 90%);
 }
 
-html, body, #root {
+html, body, #root, #app {
   width: 100%;
   height: 100%;
 }
 
-@include breakpoints( "tablet" ){
+@include breakpoints( "medium" ){
   html, body, #root {
     font-size: 12px;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
     background-image: linear-gradient(25deg, #899fb6 0%, #a6a6a6 90%);
   }

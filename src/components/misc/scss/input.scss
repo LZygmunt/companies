@@ -32,11 +32,9 @@
   }
 }
 
-@include breakpoints( "tablet" ) {
-  .input {
-    input {
-      width: 12em;
-      margin-left: .5em;
-    }
+@include breakpoints( "medium" ) {
+  .input input {
+    width: 12em;
+    margin-left: .5em;
   }
 }

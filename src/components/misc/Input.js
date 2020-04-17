@@ -36,8 +36,8 @@ const Input = ({
   };
 
   return (
-    <WrapperCorner classNames={[ "input", disabled ? "disabled" : "" ]}>
-      <label htmlFor={ name } className={ focused ? "focused" : "" }>
+    <WrapperCorner classNames={[ "input", disabled ? "disabled" : null ]}>
+      <label htmlFor={ name } className={ focused ? "focused" : null }>
         { label }:
       </label>
       <input

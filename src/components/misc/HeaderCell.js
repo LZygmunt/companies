@@ -9,14 +9,9 @@ const HeaderCell = ({
   classNames,
   sort
 }) => {
-  let isSetClassNames = classNames !== null && classNames !== undefined;
-  let className = isSetClassNames
-    ? [ ...classNames ]
-    : [];
-
   return (
     <div className="header-cell">
-      <Cell value={ value } classNames={ className }/>
+      <Cell value={ value } classNames={ classNames }/>
       <Arrow direction="down" handleClick={ sort }/>
     </div>
   );

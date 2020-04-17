@@ -20,9 +20,7 @@
     color: #606060;
     cursor: not-allowed;
 
-    & + .block, & + .block .arrow {
-      cursor: not-allowed;
-    }
+    & + .block, & + .block .arrow { cursor: not-allowed; }
 
     & + .block .arrow {
       border-right: .3em solid #606060;
@@ -31,7 +29,7 @@
   }
 }
 
-@include breakpoints( "tablet" ) {
+@include breakpoints( "medium" ) {
   .header-cell {
     flex-direction: column;
     justify-content: flex-end;
@@ -43,16 +41,13 @@
   }
 }
 
-@include breakpoints( "phone" ) {
-  .header-cell {
-    .cell {
-      //font-size: inherit;
-      overflow-wrap: unset;
-      word-wrap: unset;
-      -webkit-hyphens: unset;
-      -ms-hyphens: unset;
-      -moz-hyphens: unset;
-      hyphens: unset;
-    }
+@include breakpoints( "small" ) {
+  .header-cell .cell {
+    overflow-wrap: unset;
+    word-wrap: unset;
+    -webkit-hyphens: unset;
+    -ms-hyphens: unset;
+    -moz-hyphens: unset;
+    hyphens: unset;
   }
 }

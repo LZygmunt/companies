@@ -13,12 +13,12 @@ const CompanyItem = ({
 }) => {
   return (
     <div className="company-item grid">
-      <Cell value={ id } classNames={[ "id" ]}/>
-      <Cell value={ name } classNames={[ "name" ]}/>
-      <Cell value={ city } classNames={[ "city" ]}/>
-      <Cell value={ totalIncome } classNames={[ "total-income" ]}/>
-      <Cell value={ averageIncome } classNames={[ "average-income" ]}/>
-      <Cell value={ lastMonthIncome } classNames={[ "last-month-income" ]}/>
+      <Cell value={ id } classNames="id"/>
+      <Cell value={ name } classNames="name"/>
+      <Cell value={ city } classNames="city"/>
+      <Cell value={ totalIncome } classNames="total-income"/>
+      <Cell value={ averageIncome } classNames="average-income"/>
+      <Cell value={ lastMonthIncome } classNames="last-month-income"/>
     </div>
   );
 };

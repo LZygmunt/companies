@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-@include breakpoints( "phone" ) {
+@include breakpoints( "small" ) {
   .cell {
     font-size: 10px;
     overflow-wrap: break-word;

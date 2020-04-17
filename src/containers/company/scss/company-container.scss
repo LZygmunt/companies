@@ -2,7 +2,7 @@
 
 #company {
   width: 80em;
-  margin: 4em 5em auto;
+  margin: 4em 5em auto auto;
 
   .corners {
     min-height: 37em;
@@ -13,13 +13,11 @@
     top: calc( 50% - 2em );
     left: calc( 50% - 2em );
 
-    &.upon-incomes {
-      left: 80%
-    }
+    &.upon-incomes { left: 80%; }
   }
 }
 
-@include breakpoints( "tablet" ) {
+@include breakpoints( "medium" ) {
   #company {
     font-size: 14px;
     width: calc( 100% - 4em );
@@ -27,7 +25,7 @@
   }
 }
 
-@include breakpoints( "phone" ) {
+@include breakpoints( "small" ) {
   #company {
     width: calc( 100% - 2em );
     margin: 1em;

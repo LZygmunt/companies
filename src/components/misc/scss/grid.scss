@@ -2,21 +2,13 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 10% 30% 30% 10% 10% 10%;
+  grid-template-columns: 10% 25% 25% 13.3% 13.3% 13.3%;
 }
 
-@include breakpoints( "tablet" ) {
-  .grid {
-    grid-template-columns: 10% 25% 25% 13.3% 13.3% 13.3%;
-  }
-}
-
-@include breakpoints( "phone" ) {
+@include breakpoints( "small" ) {
   .grid {
     grid-template-columns: 20% 20% 20% 20% 20%;
 
-    .header-cell:first-of-type, .id {
-      display: none;
-    }
+    .header-cell:first-of-type, .id { display: none; }
   }
 }

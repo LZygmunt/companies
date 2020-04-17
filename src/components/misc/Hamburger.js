@@ -1,13 +1,16 @@
 import React from 'react';
+import setClassNames from "./setClassNames";
 
 import "./scss/hamburger.scss";
 
-const Hamburger = ({ handleClick, className }) => {
+const Hamburger = ({ handleClick, classNames }) => {
+  const className = setClassNames( "hamburger", classNames );
+
   return (
-    <div className={ `hamburger ${ className }`} onClick={ handleClick }>
-      <p className="bar-first"></p>
-      <p className="bar-second"></p>
-      <p className="bar-third"></p>
+    <div className={ className } onClick={ handleClick }>
+      <p className="bar-first"/>
+      <p className="bar-second"/>
+      <p className="bar-third"/>
     </div>
   );
 };

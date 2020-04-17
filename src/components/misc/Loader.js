@@ -1,10 +1,13 @@
 import React from 'react';
+import setClassNames from "./setClassNames";
 
 import "./scss/loader.scss"
 
-const Loader = ({ className }) => {
+const Loader = ({ classNames }) => {
+  const className = setClassNames( "spinner", classNames );
+
   return (
-    <div className={ `spinner ${ className }` }>
+    <div className={ className }>
 
     </div>
   );

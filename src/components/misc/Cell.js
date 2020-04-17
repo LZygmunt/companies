@@ -1,12 +1,10 @@
 import React from 'react';
+import setClassNames from "./setClassNames";
 
 import "./scss/cell.scss";
 
 const Cell = ({ children, value, classNames }) => {
-  let isSetClassNames = classNames !== null && classNames !== undefined;
-  let className = isSetClassNames
-    ? [ "cell", ...classNames ].join( ' ' )
-    : "cell";
+  const className = setClassNames( "cell", classNames );
 
   return (
     <p className={ className }>

@@ -8,13 +8,12 @@
   left: 0;
   transition: left .5s ease-in-out;
 
-  &.close {
-    left: -40em;
-  }
+  &.close { left: -40em; }
 
   h2 {
-    width: 10em;
+    width: max-content;
     margin: 0 auto;
+
   }
 
   .label {
@@ -23,7 +22,7 @@
   }
 }
 
-@include breakpoints( "tablet" ) {
+@include breakpoints( "medium" ) {
   #filter {
     height: 100%;
     position: absolute;
@@ -33,25 +32,18 @@
     padding-top: 0;
     border-right: .3em solid #899fb6;
 
-    h2 {
-      width: max-content;
-      padding-top: 2em;
-    }
+    h2 { padding-top: 2em; }
 
-    &.close {
-      left: -100%;
-    }
+    &.close { left: -100%; }
   }
 }
 
-@include breakpoints( "phone" ) {
+@include breakpoints( "small" ) {
   #filter {
     width: 100%;
     padding-top: 0;
     border-right: 0;
 
-    h2 {
-      padding-top: 1em;
-    }
+    h2 { padding-top: 1em; }
   }
 }

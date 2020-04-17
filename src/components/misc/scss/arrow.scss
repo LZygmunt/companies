@@ -35,7 +35,7 @@
   }
 }
 
-@include breakpoints( "tablet" ) {
+@include breakpoints( "medium" ) {
   .block {
     .arrow {
       font-size: 8px;
@@ -43,13 +43,11 @@
   }
 }
 
-@include breakpoints( "phone" ) {
+@include breakpoints( "small" ) {
   .block {
     width: 1.5em;
     height: 1.5em;
 
-    .arrow {
-      font-size: 8px;
-    }
+    .arrow { font-size: 8px; }
   }
 }

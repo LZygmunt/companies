@@ -32,12 +32,12 @@ class FilterContainer extends Component {
       <>
         <Hamburger
           handleClick={ this.handleClick }
-          className={ this.state.close ? "": "cross" }
+          classNames={ this.state.close ? "" : "cross" }
         />
         <Filter
           filter={ filter }
           isPending={ isPending }
-          className={ this.state.close ? "close": "" }
+          className={ this.state.close ? "close" : null }
         />
       </>
     );

@@ -309,10 +309,10 @@ class CompanyContainer extends Component {
               timeout={ 500 }
             >
               <>
-                { isPending !== "" && <Loader className={
-                  isPending === REQUEST_INCOMES_PENDING ? "upon-incomes": ""
+                <CompanyList companies={ setDisplayCompanies()}/>
+                { isPending !== "" && <Loader classNames={
+                  isPending === REQUEST_INCOMES_PENDING ? "upon-incomes": null
                 }/> }
-                <CompanyList companies={ setDisplayCompanies() }/>
               </>
             </CSSTransition>
           </SwitchTransition>
