@@ -2,7 +2,7 @@ import React from 'react';
 import Arrow from "./Arrow";
 import { DECREASE, INCREASE } from "../../store/utils/constans";
 
-import "./scss/page-list.scss"
+import "./scss/page-list.scss";
 
 const PageList = ({ currentPage, countPage, setPage }) => {
   return (

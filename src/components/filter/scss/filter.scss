@@ -1,7 +1,16 @@
+@import "../../../assets/scss/mediaqueries";
+
 #filter {
-  width: 30%;
+  width: 30em;
   height: calc( 100% - 10em );
   padding-top: 3em;
+  position: relative;
+  left: 0;
+  transition: left .5s ease-in-out;
+
+  &.close {
+    left: -40em;
+  }
 
   h2 {
     width: 10em;
@@ -9,7 +18,40 @@
   }
 
   .label {
-    width: 14em;
+    width: 12em;
     margin: 1em auto;
+  }
+}
+
+@include breakpoints( "tablet" ) {
+  #filter {
+    height: 100%;
+    position: absolute;
+    background-image: linear-gradient(25deg, #899fb6 0%, #a6a6a6 90%);
+    z-index: 1;
+    overflow: auto;
+    padding-top: 0;
+    border-right: .3em solid #899fb6;
+
+    h2 {
+      width: max-content;
+      padding-top: 2em;
+    }
+
+    &.close {
+      left: -100%;
+    }
+  }
+}
+
+@include breakpoints( "phone" ) {
+  #filter {
+    width: 100%;
+    padding-top: 0;
+    border-right: 0;
+
+    h2 {
+      padding-top: 1em;
+    }
   }
 }

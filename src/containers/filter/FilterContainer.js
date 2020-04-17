@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { filter } from "../../store/actions";
 import Filter from "../../components/filter/Filter";
+import Hamburger from "../../components/misc/Hamburger";
 
 const mapStateToProps = state => ({
   isPending: state.requestReducer.isPending
@@ -12,12 +13,32 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class FilterContainer extends Component {
+  state = {
+    close: false
+  };
+
+  componentDidMount () {
+    if ( window.innerWidth <= 1024 ) this.setState({ close: true })
+  }
+
+  handleClick = () => {
+    this.setState(prevState => ({ close: !prevState.close }));
+  };
+
   render () {
     const { filter, isPending } = this.props;
 
     return (
       <>
-        <Filter filter={ filter } isPending={ isPending }/>
+        <Hamburger
+          handleClick={ this.handleClick }
+          className={ this.state.close ? "": "cross" }
+        />
+        <Filter
+          filter={ filter }
+          isPending={ isPending }
+          className={ this.state.close ? "close": "" }
+        />
       </>
     );
   }

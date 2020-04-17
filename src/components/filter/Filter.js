@@ -15,9 +15,9 @@ import {
 
 import "./scss/filter.scss";
 
-const Filter = ({ filter, isPending }) => {
+const Filter = ({ filter, isPending, className }) => {
   return (
-    <div id="filter">
+    <div id="filter" className={ className }>
       <h2>Filter by:</h2>
       <Input
         id="company-id"

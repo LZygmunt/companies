@@ -1,7 +1,7 @@
 import React from 'react';
 import Cell from "../misc/Cell";
 
-import "./scss/company-item.scss";
+import "../misc/scss/grid.scss";
 
 const CompanyItem = ({
   id,
@@ -12,7 +12,7 @@ const CompanyItem = ({
   lastMonthIncome
 }) => {
   return (
-    <div className="company-item">
+    <div className="company-item grid">
       <Cell value={ id } classNames={[ "id" ]}/>
       <Cell value={ name } classNames={[ "name" ]}/>
       <Cell value={ city } classNames={[ "city" ]}/>

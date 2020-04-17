@@ -35,7 +35,6 @@ const Input = ({
     if ( !regex.test( data )) evt.preventDefault();
   };
 
-
   return (
     <WrapperCorner classNames={[ "input", disabled ? "disabled" : "" ]}>
       <label htmlFor={ name } className={ focused ? "focused" : "" }>

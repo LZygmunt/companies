@@ -1,9 +1,12 @@
+@import "../../../assets/scss/mediaqueries";
+
 #company {
-  width: 70%;
+  width: 80em;
   margin: 4em 5em auto;
 
   .corners {
-    height: 37em;
+    min-height: 37em;
+    max-height: max-content;
   }
 
   .spinner {
@@ -12,6 +15,36 @@
 
     &.upon-incomes {
       left: 80%
+    }
+  }
+}
+
+@include breakpoints( "tablet" ) {
+  #company {
+    font-size: 14px;
+    width: calc( 100% - 4em );
+    margin: 2em;
+  }
+}
+
+@include breakpoints( "phone" ) {
+  #company {
+    width: calc( 100% - 2em );
+    margin: 1em;
+
+    .corners {
+      min-height: unset;
+      max-height: unset;
+      height: calc( 100vh - 5em );
+    }
+
+    &-list {
+      overflow: scroll;
+      height: calc( 100% - 4em );
+    }
+
+    .spinner.upon-incomes {
+      left: calc( 50% + 2em );
     }
   }
 }

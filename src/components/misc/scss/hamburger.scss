@@ -1,0 +1,42 @@
+@import "../../../assets/scss/mediaqueries";
+
+.hamburger {
+  height: max-content;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  cursor: pointer;
+  z-index: 5;
+
+  p {
+    margin: .3em 0;
+    padding: 0;
+    height: .3em;
+    width: 2em;
+    background-color: black;
+    position: relative;
+    top: 0;
+    transition: all .5s ease-in-out;
+  }
+
+  &.cross {
+    .bar-first {
+      transform: rotateZ( -45deg );
+      top: .5em;
+    }
+
+    .bar-second {
+      transform: rotateZ( 45deg );
+      top: -.1em;
+    }
+
+    .bar-third {
+      background-color: transparent;
+    }
+  }
+}
+
+@include breakpoints( "phone" ) {
+  .hamburger {
+  }
+}

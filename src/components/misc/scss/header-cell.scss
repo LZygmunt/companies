@@ -1,3 +1,5 @@
+@import "../../../assets/scss/mediaqueries";
+
 .header-cell {
   font-weight: 700;
   text-transform: uppercase;
@@ -25,6 +27,32 @@
     & + .block .arrow {
       border-right: .3em solid #606060;
       border-bottom: .3em solid #606060;
+    }
+  }
+}
+
+@include breakpoints( "tablet" ) {
+  .header-cell {
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .block, .cell {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+@include breakpoints( "phone" ) {
+  .header-cell {
+    .cell {
+      //font-size: inherit;
+      overflow-wrap: unset;
+      word-wrap: unset;
+      -webkit-hyphens: unset;
+      -ms-hyphens: unset;
+      -moz-hyphens: unset;
+      hyphens: unset;
     }
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './containers/app/App';
 import * as serviceWorker from './serviceWorker';
 import {
@@ -13,11 +12,13 @@ import { requestReducer, filterReducer } from "./store/reducers";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
+import './index.scss';
+
 const store = createStore(
   combineReducers({ requestReducer, filterReducer }),
   compose(
     applyMiddleware( thunk ),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 
