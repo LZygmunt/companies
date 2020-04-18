@@ -5,7 +5,7 @@ complex logic that returns data which is provide to presentation components.
 
 ## App
 
-### `App.js` Class Component
+### [`App.js`](https://github.com/LZygmunt/companies/tree/master/src/containersapp/App.js) Class Component
 
 App container hold whole application and is connect with store, fetch companies and incomes via store action.
 
@@ -24,7 +24,7 @@ When all incomes will fetch `componentDidUpdate` will change `isPending` state t
 
 ## Company
 
-### `CompanyContainer.js` Class Component
+### [`CompanyContainer.js`](https://github.com/LZygmunt/companies/tree/master/src/containers/company/CompanyContainer.js) Class Component
 
 #### `mapStateToProps` and `mapDispatchToProps` Functions
 
@@ -318,7 +318,7 @@ Example
 
 ## Filter
 
-### `FilterContainer.js` Class Component
+### [`FilterContainer.js`](https://github.com/LZygmunt/companies/tree/master/src/containers/filter/FilterContainer.js) Class Component
 
 #### `mapStateToProps` and `mapDispatchToProps` Functions
 

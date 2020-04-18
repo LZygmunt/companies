@@ -35,7 +35,7 @@ For more info about store and redux library [see this](https://redux.js.org/intr
 
 Actions allows secure way change state in store. Via actions you may fetch data from external API. 
 
-### Filter Actions
+### [Filter Actions](https://github.com/LZygmunt/companies/tree/master/src/store/actions/filterAction.js)
 
 #### `filter` Function
 
@@ -91,7 +91,7 @@ class MyComponent extends React.Component {
 export default connect( null, mapDispatchToProps )( MyComponent );
 ```
 
-### Request Actions
+### [Request Actions](https://github.com/LZygmunt/companies/tree/master/src/store/actions/requestAction.js)
 
 #### `requestIncomesPendingEnable` and `requestIncomesPendingDisable` Functions
 
@@ -231,7 +231,7 @@ ReactDOM.render( <Provider store={ store }><MainComponent/></Provider>, document
 
 Now you can use store in your app.
 
-### Filter Reducers
+### [Filter Reducers](https://github.com/LZygmunt/companies/tree/master/src/store/reducers/filterReducer.js)
 
 #### `filterReducer` Function
 
@@ -327,7 +327,7 @@ export const filterReducer = ( state = initState, action ) => {
 };
 ```
 
-### Request Reducers
+### [Request Reducers](https://github.com/LZygmunt/companies/tree/master/src/store/reducers/requestReducer.js)
 
 #### `requestReducer` Function
 
@@ -395,7 +395,7 @@ export const requestReducer = ( state = initState, action ) => {
 
 ## Utils
 
-### Constants
+### [Constants](https://github.com/LZygmunt/companies/tree/master/src/store/utils/constants.js)
 
  * REQUEST_COMPANIES_PENDING - constants use to set pending for companies request
  * REQUEST_COMPANIES_SUCCESS - constants use to set companies state

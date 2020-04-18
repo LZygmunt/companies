@@ -8,7 +8,7 @@ const PageList = ({ currentPage, countPage, setPage }) => {
   return (
     <div id="page-list">
       <Arrow direction="left" handleClick={() => setPage( DECREASE )}/>
-      <span>{ currentPage } z { countPage }</span>
+      <span>{ currentPage } of { countPage }</span>
       <Arrow direction="right" handleClick={() => setPage( INCREASE )}/>
     </div>
   );

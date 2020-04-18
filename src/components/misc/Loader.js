@@ -7,9 +7,7 @@ const Loader = ({ classNames }) => {
   const className = setClassNames( "spinner", classNames );
 
   return (
-    <div className={ className }>
-
-    </div>
+    <div className={ className }/>
   );
 };
 

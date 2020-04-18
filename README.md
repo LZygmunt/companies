@@ -8,7 +8,7 @@
 
 ## Description
 
-App allows user display companies with their incomes (average, last month and total), 
+App allows user display companies with their incomes ( average, last month and total ), 
 filtering and sorting by all fields. Companies and incomes are fetch from external API.
 
 # Project Documentation
@@ -41,26 +41,27 @@ filtering and sorting by all fields. Companies and incomes are fetch from extern
 │   │   │   └── scss
 │   │   │       └── filter.scss
 │   │   └── misc
-│   │       ├── Arrow.js
-│   │       ├── Cell.js
-│   │       ├── Hamburger.js
-│   │       ├── HeaderCell.js
-│   │       ├── HeaderTable.js
-│   │       ├── Input.js
-│   │       ├── Loader.js
-│   │       ├── PageList.js
-│   │       ├── scss
-│   │       │   ├── arrow.scss
-│   │       │   ├── cell.scss
-│   │       │   ├── grid.scss
-│   │       │   ├── hamburger.scss
-│   │       │   ├── header-cell.scss
-│   │       │   ├── input.scss
-│   │       │   ├── loader.scss
-│   │       │   ├── page-list.scss
-│   │       │   └── wrapper-corner.scss
-│   │       ├── setClassNames.js
-│   │       └── WrapperCorner.js
+│   │   │   ├── Arrow.js
+│   │   │   ├── Cell.js
+│   │   │   ├── Hamburger.js
+│   │   │   ├── HeaderCell.js
+│   │   │   ├── HeaderTable.js
+│   │   │   ├── Input.js
+│   │   │   ├── Loader.js
+│   │   │   ├── PageList.js
+│   │   │   ├── scss
+│   │   │   │   ├── arrow.scss
+│   │   │   │   ├── cell.scss
+│   │   │   │   ├── grid.scss
+│   │   │   │   ├── hamburger.scss
+│   │   │   │   ├── header-cell.scss
+│   │   │   │   ├── input.scss
+│   │   │   │   ├── loader.scss
+│   │   │   │   ├── page-list.scss
+│   │   │   │   └── wrapper-corner.scss
+│   │   │   ├── setClassNames.js
+│   │   │   └── WrapperCorner.js
+│   │   └── doc_components.md
 │   ├── containers
 │   │   ├── app
 │   │   │   ├── App.js
@@ -70,8 +71,9 @@ filtering and sorting by all fields. Companies and incomes are fetch from extern
 │   │   │   ├── CompanyContainer.js
 │   │   │   └── scss
 │   │   │       └── company-container.scss
-│   │   └── filter
-│   │       └── FilterContainer.js
+│   │   ├── filter
+│   │   │   └── FilterContainer.js
+│   │   └── doc_continers.md
 │   ├── index.js
 │   ├── index.scss
 │   ├── serviceWorker.js
@@ -86,26 +88,27 @@ filtering and sorting by all fields. Companies and incomes are fetch from extern
 │   │   │   └── requestReducer.js
 │   │   └── utils
 │   │       └── constans.js
+│   └── doc_store.md
 ```
 
-## `public/` Folder 
+## [`public/`](https://github.com/LZygmunt/companies/blob/master/public/) Folder 
 
 This folder contains:
- * `index.html` is the page template;
- * `favicon.ico `, `logo192.png`, `logo512.png` are icons; 
- * `manifest.json` describe icon for mobile devices; 
- * `robots.txt` is a text file that tells web robots( most often search engine s) which pages on your site to crawl.
+ * [`index.html`](https://github.com/LZygmunt/companies/blob/master/public/index.html) is the page template;
+ * [`favicon.ico`](https://github.com/LZygmunt/companies/blob/master/public/favicon.ico), [`logo192.png`](https://github.com/LZygmunt/companies/blob/master/public/logo192.png), [`logo512.png`](https://github.com/LZygmunt/companies/blob/master/public/logo512.png) are icons; 
+ * [`manifest.json`](https://github.com/LZygmunt/companies/blob/master/public/manifest.json) describe icon for mobile devices; 
+ * [`robots.txt`](https://github.com/LZygmunt/companies/blob/master/public/robots.txt) is a text file that tells web robots( most often search engines ) which pages on your site to crawl.
 
 **Note: The following file and folder names are documentation references associated with them!**
 
-## `src/` Folder 
+## [`src/`](https://github.com/LZygmunt/companies/blob/master/src/) Folder 
 
 This folder contains all React source files written in js and jsx and SASS stylesheet files.
 
- * `./index.js` is the JavaScript entry point;
- * `./index.scss` describe appearance for basic tags such as `<html></html>`, `<body></body>` and custom identifiers
+ * [`./index.js`](https://github.com/LZygmunt/companies/blob/master/src/index.js) is the JavaScript entry point;
+ * [`./index.scss`](https://github.com/LZygmunt/companies/blob/master/src/index.scss) describe appearance for basic tags such as `<html></html>`, `<body></body>` and custom identifiers
 like `#root` and `#app`;
- * `./serwiceWorker.js` contains functions that allows app work offline.
+ * [`./serwiceWorker.js`](https://github.com/LZygmunt/companies/blob/master/src/serviceWorker.js) contains functions that allows app work offline.
 
 ### [`./assets/`](https://github.com/LZygmunt/companies/tree/master/src/assets/doc_assets.md) Folder
 

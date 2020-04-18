@@ -5,120 +5,182 @@ They take props from parent components and display it.
 
 ## Company
 
-### `CompanyItem.js` Function Component
+### [`CompanyItem.js`](https://github.com/LZygmunt/companies/tree/master/src/components/company/CompanyItem.js) Function Component
 
-#### Function
+[`CompanyItem.js`](https://github.com/LZygmunt/companies/tree/master/src/components/company/CompanyItem.js) component holds information about one company which get from parent component. There are:
+ * `id` is ID of company;
+ * `name` is company name;
+ * `city` is city of company location;
+ * `totalIncome` is company total income;
+ * `averageIncome` is company average income;
+ * `lastMonthIncome` is company last month income.
 
-##### Implementation
+This information is assign into specific cell in table and delivered to [`Cell.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/Cell.js) component. Render a row of [`Cell.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/Cell.js) components.
 
-```javascript
+### [`CompanyList.js`](https://github.com/LZygmunt/companies/tree/master/src/components/company/CompanyList.js) Function Component
 
-```
-
-
-### `CompanyList.js` Function Component
-
-#### Function
-
-##### Implementation
-
-```javascript
-
-```
-
+Gather information about all rows current display in table. Via props `companies` gets array of companies on current page.
+From this array map elements to [`CompanyItem.js`](https://github.com/LZygmunt/companies/tree/master/src/components/company/CompanyItem.js) component and render composite list of [`CompanyItem.js`](https://github.com/LZygmunt/companies/tree/master/src/components/company/CompanyItem.js) components.
 
 ## Filter
 
-### `Filter.js` Function Component
+### [`Filter.js`](https://github.com/LZygmunt/companies/tree/master/src/components/filter/Filter.js) Function Component
 
-#### Function
+Represent filtering block with followings props:
+ * `filter` is function passed from parent, allows to filter by specific field;
+ * `isPending` is state passed from the parent, which determines if the filtering field is disabled;
+ * `className` is CSS class passed from parent, which determines if the filtering block is open. 
 
-##### Implementation
-
-```javascript
-
-```
+Filtering block consist of header tag with text and few [`Input.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/Input.js) components.
 
 ## Misc
 
-### `Arrow.js` Function Component
+### [`setClassNames.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/setClassNames.js) Function
 
-#### Function
-
-##### Implementation
-
-##### How To Use?
-
-### `Cell.js` Function Component
-
-#### Function
+Transform class array to one string.
 
 ##### Implementation
 
-##### How To Use?
+Function take the first argument named `mainClass` as start class and depend on condition merge it with the second argument named
+`classList`. `classList` may be a string and array of string, If the second argument is neither string or array then will be omitted
+and function return `mainClass`. 
 
-### `Hamburger.js` Function Component
+```javascript
+export default ( mainClass, classList ) => {
+    let list;
+    if ( typeof classList === "string" && classList !== "") {
+      list = [ mainClass, classList ]
+        .filter( item => item !== undefined && item !== null && item !== "" )
+        .join( " " );
+    } else if ( classList && classList.length ){
+      list = [ mainClass, ...classList ]
+        .filter( item => item !== undefined && item !== null && item !== "" )
+        .join( " " );
+    } else {
+      list = mainClass;
+    }
 
-#### Function
-
-##### Implementation
-
-##### How To Use?
-
-### `HeaderCell.js` Function Component
-
-#### Function
-
-##### Implementation
-
-##### How To Use?
-
-### `HeaderTable.js` Function Component
-
-#### Function
-
-##### Implementation
-
-##### How To Use?
-
-### `Input.js` Function Component
-
-#### Function
-
-##### Implementation
+  return list;
+};
+```
 
 ##### How To Use?
 
-### `Loader.js` Function Component
+Example
+```javascript
+...
+setClassNames( "main-class", [ "this", "is", "class", "array" ]);  // Will return "main-class this is class array"
+...
+```
 
-#### Function
+### [`WrapperCorner.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/WrapperCorner.js) Function Component
 
-##### Implementation
+This component create corners for child element. They are display in top-left and bottom-right corner of element.
+Component have following props:
+ * `children` keep all children passed inside components tag;
+ * `classNames` is CSS class list of component;
+ * `id` is CSS component identifier.
 
-##### How To Use?
+Component use `setClassNames()` function that transform array to string. 
 
-### `PageList.js` Function Component
+### [`Arrow.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/Arrow.js) Function Component
 
-#### Function
+This component specify appearance and behaviour of elements in component via following props:
+ * `diection` describe direction the arrow is pointing;
+ * `handleClick` function called after clicking on the arrow.
 
-##### Implementation
+Component is used to display arrow for multi-functional purpose.
 
-##### How To Use?
+### [`Cell.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/Cell.js) Function Component
 
-### `setClassNames.js` Function Component
+Describe cell from the table and gets props: 
+ * `children` keep all children passed inside components tag;
+ * `value` is the text display in cell;
+ * `classNames` is CSS class list associated with specific cell.
 
-#### Function
+Component is used to display cell in table.
 
-##### Implementation
+Component use `setClassNames()` function that transform array to string. 
 
-##### How To Use?
+### [`Hamburger.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/Hamburger.js) Function Component
 
-### `WrapperCorner.js` Function Component
+Describe button with three parallel bars that will change to cross after clicking on it a gets props:
+ * `handleClick` function called after clicking on the button;
+ * `classNames` is CSS class list associated with button.
+  
+Component is used to display dynamic button for close blocks. 
 
-#### Function
+Component use `setClassNames()` function that transform array to string. 
 
-##### Implementation
+### [`HeaderCell.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/HeaderCell.js) Function Component
 
-##### How To Use?
+Describe cell in header table and take props:
+ * `value` is the text display in cell;
+ * `classNames` is CSS class list associated with specific cell;
+ * `sort` is sorting function passed from the parent.
+
+Component is used to display cell in header table.
+
+### [`HeaderTable.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/HeaderTable.js) Function Component
+
+Describe appearance and behaviour elements inside this component. Component gets props:
+ * `sort` is sorting function passed from the parent;
+ * `isPending` is state passed from the parent, which determines if the filtering field is disabled;
+ 
+Component use local state `screenWidth` via react hooks `useState()` and `useEffect()`. This state is responsible for screen
+width and holds value of `window.innerWidth` object.
+
+Component is used to display header row of table.
+
+#### `isSmall` Function
+
+Functions return boolean value depend on screen width. It used to disable some elements on small screen. 
+
+### [`Input.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/Input.js) Function Component
+
+Describe block of <b>input</b> tag and associated with him <b>label</b> tag. Component gets props: 
+ * `id` is CSS identifier of input element;
+ * `name` is name associated with input element;
+ * `type` is type of input element;
+ * `label` is text display over input;
+ * `disabled` is property determines if element is disabled or not; 
+ * `filter` is function passed from parent, allows to filter by specific field;
+ * `actionType` is type of action passes from parents.
+ 
+Component use local state `focused` via react hooks `useState()`. This state is responsible for set focus on element.
+
+Component is used to display input into filtering block and pass value from the input to store.
+
+#### `changeFocus` Function
+
+Changing focus element on enter and leave from input.
+
+#### `handleChange` Function
+
+Change focus element and filter by value form the input.
+
+#### `disableNonNumeric` Function
+
+Disable non numeric and negative value from numbers input. Function gets argument `evt` which is an event and gets it `data` 
+and `target`. Check if input type is number and check if data from event is positive number. If provided value is negative 
+value or non numeric value is not inserted into input value. 
+
+### [`Loader.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/Loader.js) Function Component
+
+Describe spinner that show depend on CSS class. It should show only data is fetching. Take one props from parent `classNames`
+which is CSS class list.
+
+Component is used to display spinner when fetching is not end.
+
+Component use `setClassNames()` function that transform array to string. 
+
+### [`PageList.js`](https://github.com/LZygmunt/companies/tree/master/src/components/misc/PageList.js) Function Component
+
+Describe block with arrows and information about number of pages and current page. Component gets props:
+ * `currentPage` is current page number;
+ * `countPage` is number of pages;
+ * `setPage` is function that set number of next and previous page;
+
+Component is used to display block with arrows and text inform users which page is and how much pages is.
 
 [<<< To Main Page <<<](https://github.com/LZygmunt/companies)
