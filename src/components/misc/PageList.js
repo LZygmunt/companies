@@ -1,6 +1,6 @@
 import React from 'react';
 import Arrow from "./Arrow";
-import { DECREASE, INCREASE } from "../../store/utils/constans";
+import { DECREASE, INCREASE } from "../../store/utils/constants";
 
 import "./scss/page-list.scss";
 

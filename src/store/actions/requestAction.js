@@ -5,7 +5,7 @@ import {
   REQUEST_COMPANIES_PENDING,
   REQUEST_COMPANIES_SUCCESS,
   REQUEST_COMPANIES_FAILED
-} from "../utils/constans";
+} from "../utils/constants";
 
 export const requestIncomesPendingEnable = () => ({
   type: REQUEST_INCOMES_PENDING, payload: true

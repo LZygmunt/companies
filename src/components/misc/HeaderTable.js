@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderCell from "./HeaderCell";
-import { REQUEST_COMPANIES_PENDING } from "../../store/utils/constans";
+import { REQUEST_COMPANIES_PENDING } from "../../store/utils/constants";
 
 import "./scss/grid.scss";
 

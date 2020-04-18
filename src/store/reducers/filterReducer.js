@@ -8,7 +8,7 @@ import {
   SET_FILTER_NAME,
   SET_FILTER_TOTAL_INCOME_TO,
   SET_FILTER_TOTAL_INCOME_FROM
-} from "../utils/constans";
+} from "../utils/constants";
 
 const initState = {
   id: "",

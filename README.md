@@ -87,7 +87,7 @@ filtering and sorting by all fields. Companies and incomes are fetch from extern
 │   │   │   ├── index.js
 │   │   │   └── requestReducer.js
 │   │   └── utils
-│   │       └── constans.js
+│   │       └── constants.js
 │   └── doc_store.md
 ```
 

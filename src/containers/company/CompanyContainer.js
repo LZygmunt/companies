@@ -6,7 +6,7 @@ import {
   INCREASE,
   REQUEST_COMPANIES_PENDING,
   REQUEST_INCOMES_PENDING
-} from "../../store/utils/constans";
+} from "../../store/utils/constants";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import CompanyList from "../../components/company/CompanyList";
 import HeaderTable from "../../components/misc/HeaderTable";

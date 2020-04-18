@@ -11,7 +11,7 @@ import {
   SET_FILTER_NAME,
   SET_FILTER_TOTAL_INCOME_FROM,
   SET_FILTER_TOTAL_INCOME_TO
-} from "../../store/utils/constans";
+} from "../../store/utils/constants";
 
 import "./scss/filter.scss";
 

@@ -5,7 +5,7 @@ import {
   REQUEST_INCOMES_FAILED,
   REQUEST_INCOMES_PENDING,
   REQUEST_INCOMES_SUCCESS
-} from "../utils/constans";
+} from "../utils/constants";
 
 const initState = {
   companies: [],
