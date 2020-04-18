@@ -5,7 +5,7 @@ complex logic that returns data which is provide to presentation components.
 
 ## App
 
-### [`App.js`](https://github.com/LZygmunt/companies/tree/master/src/containersapp/App.js) Class Component
+### [`App.js`](https://github.com/LZygmunt/companies/tree/master/src/containers/app/App.js) Class Component
 
 App container hold whole application and is connect with store, fetch companies and incomes via store action.
 
