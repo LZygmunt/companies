@@ -3,9 +3,9 @@
 This folder should contains files like images, videos, audio files, global stylesheet with variables, mixins, etc. 
 In this project this folder contain `@mixin` with breakpoints used in app. 
 
-### Mediaqueries Mixin
+#### Mediaqueries Mixin
 
-#### Implementation
+##### Implementation
 
 ```SCSS
 @mixin breakpoints( $point ) {        # Name of mixin
@@ -24,7 +24,7 @@ I implement `@mixin` <b>breakpoints</b> with parameter `$point`. This parameter 
 one of this value `"small"` for styles screen smaller or equal to <b>568px</b> and `"medium"` for styles screen smaller or equal to <b>1200px</b>.
 The bigger screen than <b>1200px</b> is styled writing code without this mixin.
 
-#### How To Use?
+##### How To Use?
 
 First you have to import in file that you want to use it by the relative path to the file in `assets/scss/` as shown below.
 
@@ -59,3 +59,5 @@ Now you could use mixin like this:
   }
 }
 ```
+
+[<<< To Main Page <<<](https://github.com/LZygmunt/companies)

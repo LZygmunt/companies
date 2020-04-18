@@ -54,5 +54,4 @@ export const requestCompanies = () => dispatch => {
     .then( res => res.json())
     .then( data => dispatch({ type: REQUEST_COMPANIES_SUCCESS, payload: data }))
     .catch( error => dispatch({ type: REQUEST_COMPANIES_FAILED, payload: error }))
-
 };

@@ -18,7 +18,7 @@ class FilterContainer extends Component {
   };
 
   componentDidMount () {
-    if ( window.innerWidth <= 1024 ) this.setState({ close: true })
+    if ( window.innerWidth <= 1024 ) this.setState({ close: true });
   }
 
   handleClick = () => {

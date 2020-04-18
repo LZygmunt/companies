@@ -9,7 +9,7 @@
 ## Description
 
 App allows user display companies with their incomes (average, last month and total), 
-filtering and sorting by all fields. Companies and incomes ara fetch from external API.
+filtering and sorting by all fields. Companies and incomes are fetch from external API.
 
 # Project Documentation
 
@@ -127,9 +127,9 @@ This folder contains container components with stylesheets.
  * [`./filter/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers#Filter) contains container filter block;
  * [`./app/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers#App) contains container with entire application.
 
-### [`./store/`](https://github.com/LZygmunt/companies/tree/master/src/) Folder
+### [`./store/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store) Folder
 
 This folder contains store with actions.
- * [`./actions/`](https://github.com/LZygmunt/companies/tree/master/src/) contains actions use to filtering and requesting;
- * [`./reducers/`](https://github.com/LZygmunt/companies/tree/master/src/) contains reducers use to filtering and requesting;
- * [`./utils/`](https://github.com/LZygmunt/companies/tree/master/src/) contains utilities like constants.
+ * [`./actions/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store#Actions) contains actions use to filtering and requesting;
+ * [`./reducers/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store#Reducers) contains reducers use to filtering and requesting;
+ * [`./utils/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store#Utils) contains utilities like constants.

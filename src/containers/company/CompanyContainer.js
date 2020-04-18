@@ -137,36 +137,6 @@ class CompanyContainer extends Component {
     filteredCompanies = intervalCondition( filteredCompanies, averageIncome, "averageIncome" );
     filteredCompanies = intervalCondition( filteredCompanies, lastMonthIncome, "lastMonthIncome" );
 
-    // if ( +averageIncome.from === 0 && +averageIncome.to !== 0) {
-    //   filteredCompanies = filteredCompanies.filter( company => +company.averageIncome < +averageIncome.to);
-    // } else if ( +averageIncome.to === 0 && +averageIncome.from !== 0 ) {
-    //   filteredCompanies = filteredCompanies.filter( company => +company.averageIncome > +averageIncome.from);
-    // } else if ( +averageIncome.from > 0 && +averageIncome.to > 0) {
-    //   filteredCompanies = filteredCompanies.filter(
-    //     company => +company.averageIncome > +averageIncome.from && +company.averageIncome < +averageIncome.to
-    //   );
-    // }
-    //
-    // if ( +totalIncome.from === 0 && +totalIncome.to !== 0 ) {
-    //   filteredCompanies = filteredCompanies.filter( company => +company.totalIncome < +totalIncome.to);
-    // } else if ( +totalIncome.to === 0 && +totalIncome.from !== 0 ) {
-    //   filteredCompanies = filteredCompanies.filter( company => +company.totalIncome > +totalIncome.from);
-    // } else if ( +totalIncome.from > 0 && +totalIncome.to > 0) {
-    //   filteredCompanies = filteredCompanies.filter(
-    //     company => +company.totalIncome > +totalIncome.from && +company.totalIncome < +totalIncome.to
-    //   );
-    // }
-    //
-    // if ( +lastMonthIncome.from === 0 && +lastMonthIncome.to !== 0 ) {
-    //   filteredCompanies = filteredCompanies.filter( company => +company.lastMonthIncome < +lastMonthIncome.to);
-    // } else if ( +lastMonthIncome.to === 0 && +lastMonthIncome.from !== 0 ) {
-    //   filteredCompanies = filteredCompanies.filter( company => +company.lastMonthIncome > +lastMonthIncome.from);
-    // } else if ( +lastMonthIncome.from > 0 && +lastMonthIncome.to > 0) {
-    //   filteredCompanies = filteredCompanies.filter(
-    //     company => +company.lastMonthIncome > +lastMonthIncome.from && +company.lastMonthIncome < +lastMonthIncome.to
-    //   );
-    // }
-
     if ( sortType !== "" ) {
       filteredCompanies = quickSort( filteredCompanies, 0, filteredCompanies.length - 1, column, sortType );
     }
