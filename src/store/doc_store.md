@@ -69,7 +69,7 @@ First you have to import action to destination file, for example like this:
 ```javascript
 import { filter } from "../../store/actions";
 ```
-Then create dispatch map as shown on [top](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store#Store).
+Then create dispatch map as shown on [top](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store.md#Store).
 Dispatch function send action to reducer. When you have dispatch map you may use action in your component.
 
 Example
@@ -212,7 +212,7 @@ requestCompanies();
 Reducers are pure function return always the same output. Reducer take current state and type from called 
 action. After copy entire state and payload value from action, it merges them into object which is returned.
 
-To use reducers you have to create store in `src/index.js` file.
+To use reducers you have to create store in [`src/index.js`](https://github.com/LZygmunt/companies/tree/master/src/index.js) file.
 
 ```javascript
 ...
