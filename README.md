@@ -116,23 +116,23 @@ This folder contains stylesheets shared over whole app.
 
 [`./scss/_mediaqueries.scss`](https://github.com/LZygmunt/companies/tree/master/src/assets/doc_assets.md#Mediaqueries-Mixin) contains `@mixin` SASS function with breakpoints.
 
-### [`./components/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components) Folder
+### [`./components/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components.md) Folder
 
 This folder contains presentation components with stylesheets.
- * [`./company/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components#Company) contains presentation layer of each companies( with incomes ) and list of companies;
- * [`./filter/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components#Filter) contains presentation layer of filter block;
- * [`./misc/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components#Misc) contains presentation layer of miscellaneous components like custom inputs, cells, etc.
+ * [`./company/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components.md#Company) contains presentation layer of each companies( with incomes ) and list of companies;
+ * [`./filter/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components.md#Filter) contains presentation layer of filter block;
+ * [`./misc/`](https://github.com/LZygmunt/companies/tree/master/src/components/doc_components.md#Misc) contains presentation layer of miscellaneous components like custom inputs, cells, etc.
 
-### [`./containers/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers) Folder
+### [`./containers/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers.md) Folder
 
 This folder contains container components with stylesheets.
- * [`./company/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers#Company) contains container with list of companies;
- * [`./filter/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers#Filter) contains container filter block;
- * [`./app/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers#App) contains container with entire application.
+ * [`./company/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers.md#Company) contains container with list of companies;
+ * [`./filter/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers.md#Filter) contains container filter block;
+ * [`./app/`](https://github.com/LZygmunt/companies/tree/master/src/containers/doc_containers.md#App) contains container with entire application.
 
-### [`./store/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store) Folder
+### [`./store/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store.md) Folder
 
 This folder contains store with actions.
- * [`./actions/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store#Actions) contains actions use to filtering and requesting;
- * [`./reducers/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store#Reducers) contains reducers use to filtering and requesting;
- * [`./utils/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store#Utils) contains utilities like constants.
+ * [`./actions/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store.md#Actions) contains actions use to filtering and requesting;
+ * [`./reducers/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store.md#Reducers) contains reducers use to filtering and requesting;
+ * [`./utils/`](https://github.com/LZygmunt/companies/tree/master/src/store/doc_store.md#Utils) contains utilities like constants.
